@@ -1,0 +1,4 @@
+O usuario deve cadastrar uma imagem para seu perfil na aws, 
+podem também serem cadastradas, o upload das imagens
+devem ser feitos atraves da awsController, service e repository
+as gerações de referencias (UUID) devem ser feitas no backend js
