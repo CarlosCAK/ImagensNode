@@ -1,12 +1,12 @@
+const UsuarioPostDTO = require("../dto/UsuarioPostDTO")
+const UsuarioPutDTO = require("../dto/UsuarioPutDTO")
+const UsuarioService = require("../service/UsuarioService")
 
-const UserService = require("../service/UsuarioService")
-const UserModel = require("../model/UsuarioModel")
 
-
-class UserController{
+class UsuarioController{
 
     constructor(){
-        this.service = new UserService()
+        this.service = new UsuarioService()
     }
 
     async buscarPorId(req,res) {
@@ -27,14 +27,9 @@ class UserController{
     async salvar(req, res){
     
         try {
-            const dataHoje = new Date();
-            const dataTemplate = dataHoje.toISOString().slice(0, 10)
-    
-            const id = +req.body.id;
+      
             const nome = req.body.nome;
-    
-            const user = new UserModel(id,nome,dataTemplate)
-            console.log(user)
+            const user = new UsuarioPostDTO(nome)
             this.service.salvar(user)
 
             res.status(200).json({
@@ -71,7 +66,7 @@ class UserController{
 
         try {
             
-            const usuario = new UserModel(+req.body.id,req.body.nome, null)
+            const usuario = new UsuarioPutDTO(+req.body.id,req.body.nome)
             this.service.atualizar(usuario)
 
             res.status(200).json({
@@ -87,4 +82,4 @@ class UserController{
 
 }
 
-module.exports = UserController
+module.exports = UsuarioController

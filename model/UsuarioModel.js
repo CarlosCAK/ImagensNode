@@ -1,10 +1,10 @@
-class UserModel{
+class UsuarioModel{
 
-    constructor(id,nome,data_criacao){
+    constructor(id,nome,dataCriacao){
         this.id = id;
         this.nome = nome;
-        this.data_criacao = data_criacao;
+        this.dataCriacao = dataCriacao;
     }
 }
 
-module.exports = UserModel;
+module.exports = UsuarioModel;

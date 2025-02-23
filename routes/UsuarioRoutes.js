@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
-const UserController = require("../controller/UserController")
+const UsuarioController = require("../controller/UsuarioController")
 
-const controller = new UserController()
+const controller = new UsuarioController()
 
 
 router.get("/:id",  (req,res) => controller.buscarPorId(req,res))

@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
-const ImageController = require("../Controller/ImageController")
+const ImagemController = require("../controller/ImagemController")
 
-const controller = new ImageController()
+const controller = new ImagemController()
 
 
 router.get("/:id",(req,res) => controller.buscarPorId(req,res))

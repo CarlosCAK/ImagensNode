@@ -1,4 +1,4 @@
-class ImageModel{
+class ImagemModel{
 
     constructor(id, referenecia, dataCriacao, titulo){
         this.id = id,
@@ -9,4 +9,4 @@ class ImageModel{
 
 }
 
-module.exports = ImageModel;
+module.exports = ImagemModel;

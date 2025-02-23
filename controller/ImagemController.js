@@ -1,8 +1,9 @@
 
-const ImageModel = require("../model/ImagemModel")
 const ImageService = require("../service/ImagemService")
+const ImagePostDTO = require("../dto/ImagemPostDTO")
+const ImagemPutDTO = require("../dto/ImagemPutDTO")
 
-class ImageController{
+class ImagemController{
 
     constructor(){
         this.service = new ImageService()
@@ -11,15 +12,12 @@ class ImageController{
     async salvar(req,res){
 
         try {
-            const currentDate = new Date();
-
-            const date = currentDate.toISOString().slice(0, 10)
+           
     
-            const id= req.body.id
             const referencia= req.body.referencia
             const titulo = req.body.titulo
 
-            const image = new ImageModel(id,referencia,date,titulo) 
+            const image = new ImagePostDTO(referencia,titulo) 
 
             this.service.salvar(image)
 
@@ -50,7 +48,7 @@ class ImageController{
             const titulo = req.body.titulo
             const id = req.body.id
             
-            const imagem = new ImageModel(id,referencia,null,titulo)
+            const imagem = new ImagemPutDTO(id,referencia,null,titulo)
             console.log(imagem)
             this.service.atualizar(imagem)
 
@@ -79,4 +77,4 @@ class ImageController{
     }
 
 }
-module.exports = ImageController
+module.exports = ImagemController

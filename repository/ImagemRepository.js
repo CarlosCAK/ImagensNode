@@ -1,19 +1,19 @@
 const ImageModel = require("../model/ImagemModel")
 
-class ImageRepository{
+class ImagemRepository{
 
     constructor(){
         this.database = require("../configuration/conn")
     }
 
     async salvar(image){
-        this.database.query("INSERT INTO image (id,referencia,data_criacao,titulo) values (?,?,?,?)", [image.id, image.referencia, image.dataCriacao, image.titulo])
+        this.database.query("INSERT INTO imagem (referencia,data_criacao,titulo) values (?,?,?)", [image.referencia, image.dataCriacao, image.titulo])
         console.log(image)
     }
 
     async buscarPorId(id){
         const result = await new Promise((resolve, rejected) => {
-            this.database.query("SELECT * FROM image WHERE id = ?", [id], (erro, result) => {
+            this.database.query("SELECT * FROM imagem WHERE id = ?", [id], (erro, result) => {
                 if (erro) {
                     return rejected(erro);
                 }
@@ -22,14 +22,8 @@ class ImageRepository{
         })
         if (result.length > 0) {
             
-                const id =  result[0].id
-                const referencia =  result[0].referencia
-                const data_criacao =  result[0].data_criacao
-                const titulo =  result[0].titulo
-
-                const image = new ImageModel(id,referencia,data_criacao,titulo)
-            
-                return image
+            return result;
+               
         }
         else {
             throw new Error("Erro na busca")
@@ -37,12 +31,12 @@ class ImageRepository{
     }
      atualizar(image){
       
-         this.database.query("UPDATE image SET referencia = ?, titulo = ? WHERE id = ?", [image.referencia, image.titulo, image.id])
+         this.database.query("UPDATE imagem SET referencia = ?, titulo = ? WHERE id = ?", [image.referencia, image.titulo, image.id])
     }
     async remover(id){
-        this.database.query("DELETE FROM image where id = ?", [id])
+        this.database.query("DELETE FROM imagem where id = ?", [id])
     }
 
 }
 
-module.exports = ImageRepository;
+module.exports = ImagemRepository;

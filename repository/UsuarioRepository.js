@@ -9,7 +9,7 @@ class UserRepository {
     async salvar(usuario) {
 
         this.database.query("INSERT INTO USUARIO (nome,data_criacao) values (?,?)",
-            [usuario.nome, usuario.data_criacao], (erro, resposta) => {
+            [usuario.nome, usuario.dataCriacao], (erro, resposta) => {
                 if (erro) {
                     throw new Error(erro)
                 }
@@ -30,11 +30,8 @@ class UserRepository {
         if (result.length > 0) {
 
 
-            const resultID = result[0].id
-            const nome = result[0].nome
-            const data = result[0].data_criacao
-            const user =  new UserModel(resultID, nome, data)
-            return user;
+            
+            return result;
 
         }else{
             throw new Error("Deu erro")
