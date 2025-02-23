@@ -3,7 +3,7 @@ const UserModel = require("../Models/UserModel")
 class UserRepository {
 
     constructor() {
-        this.database = require("../Services/conn");
+        this.database = require("../configuration/conn");
     }
 
     async salvar(usuario) {

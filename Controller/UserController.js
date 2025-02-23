@@ -1,4 +1,4 @@
-const app = require("../Controller/app")
+
 const UserService = require("../Services/UserService")
 const UserModel = require("../Models/UserModel")
 

@@ -1,7 +1,6 @@
 const express = require("express")
 // const userRepository = require("../Repository/userRepository")
-const database = require("../Services/conn")
-const routes = require("../Routes/routes")
+const routes = require("./Routes/routes")
 // const repository = new userRepository();
 
 const app = express();

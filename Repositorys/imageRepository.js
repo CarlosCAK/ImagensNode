@@ -3,7 +3,7 @@ const ImageModel = require("../Models/ImageModel")
 class ImageRepository{
 
     constructor(){
-        this.database = require("../Services/conn")
+        this.database = require("../configuration/conn")
     }
 
     async salvar(image){
