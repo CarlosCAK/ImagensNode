@@ -1,5 +1,5 @@
-const ImageRoutes = require("./ImageRoutes")
-const userRoutes = require("./UserRoutes")
+const ImageRoutes = require("./ImagemRoutes")
+const userRoutes = require("./UsuarioRoutes")
 const express = require('express');
 
 

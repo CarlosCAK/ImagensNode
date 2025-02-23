@@ -1,6 +1,6 @@
 
-const UserService = require("../Services/UserService")
-const UserModel = require("../Models/UserModel")
+const UserService = require("../service/UsuarioService")
+const UserModel = require("../model/UsuarioModel")
 
 
 class UserController{
@@ -19,7 +19,7 @@ class UserController{
     
         }catch(error){
             res.status(404).json({
-                "message" : "sssssssss"
+                "message" : error
             })
         }
     }

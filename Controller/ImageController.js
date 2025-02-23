@@ -1,6 +1,6 @@
 
-const ImageModel = require("../Models/ImageModel")
-const ImageService = require("../Services/ImageService")
+const ImageModel = require("../model/ImagemModel")
+const ImageService = require("../service/ImagemService")
 
 class ImageController{
 
