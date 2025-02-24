@@ -14,12 +14,12 @@ class ImagemController{
         try {
            
     
-            const referencia= req.body.referencia
+            const caminhoImagem = req.body.caminhoImagem
             const titulo = req.body.titulo
 
-            const image = new ImagePostDTO(referencia,titulo) 
+            const image = new ImagePostDTO(titulo) 
 
-            this.service.salvar(image)
+            this.service.salvar(image, caminhoImagem)
 
             res.status(200).json({"message" : "Sucesso"})
         } catch (error) {

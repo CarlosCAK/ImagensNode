@@ -1,13 +1,16 @@
 const ImageRepository = require("../repository/ImagemRepository")
 const ImagemGetDTO = require("../dto/ImagemGetDTO")
+const AwsService = require("./AwsService")
+const { v4: uuidv4 } = require('uuid');
 
 class ImageService{
 
     constructor(){
         this.repository = new ImageRepository();
+        this.awsService = new AwsService()
     }
 
-    async salvar(imagemPostDTO){
+    async salvar(imagemPostDTO, arquivoImagem){
 
         const currentDate = new Date();
 
@@ -16,9 +19,13 @@ class ImageService{
         const imagem = imagemPostDTO.toEntity();
 
         imagem.dataCriacao = date;
+        imagem.referencia = uuidv4()
+
+        this.awsService.uploadFile(arquivoImagem,"hav-bucket-images",imagem.referencia)
 
         this.repository.salvar(imagem)
     }
+
     async atualizar(imagemPutDto){
         const imagem = imagemPutDto.toEntity()
         this.repository.atualizar(imagem)

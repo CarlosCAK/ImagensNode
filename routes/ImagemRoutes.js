@@ -11,3 +11,4 @@ router.delete("/:id", (req,res) => controller.remover(req,res))
 router.put("/", (req,res) => controller.atualizar(req,res))
 
 module.exports = router;
+        

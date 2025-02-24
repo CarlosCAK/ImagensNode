@@ -2,8 +2,7 @@ const ImagemModel = require("../model/ImagemModel")
 
 class ImagemPostDTO{
 
-    constructor(referenecia,titulo){
-        this.referencia = referenecia,
+    constructor(titulo){
         this.titulo = titulo
     }
 

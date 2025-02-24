@@ -11,7 +11,6 @@ class ImagemGetDTO {
     toEntity() {
         return new ImagemModel(this.id, this.referencia, this.dataCriacao, this.titulo);
     }
-    
 }
 
 module.exports = ImagemGetDTO;

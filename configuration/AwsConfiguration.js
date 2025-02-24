@@ -10,4 +10,4 @@ AWS.config.update({
 // Criação da instância do S3
 const s3 = new AWS.S3();
 
-module.exports = s3;
+module.exports = s3
