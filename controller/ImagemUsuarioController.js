@@ -57,6 +57,20 @@ class ImagemUsuarioController{
             })
         }
     }
+    async buscarTodos(req,res){
+        try {
+        
+    
+            const imagens = await this.service.buscarTodos()
+    
+            res.status(200).json({imagens})
+    
+        } catch (error) {
+            res.status(500).json({error})
+        }
+        
+    }
+    
 
 }
 

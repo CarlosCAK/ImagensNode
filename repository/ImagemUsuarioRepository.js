@@ -30,6 +30,22 @@ class UsuarioImagemRepository {
             throw new Error("Nenhuma imagem encontrada para o usuário");
         }
     }
+    async buscarTodos() {
+        const result = await new Promise((resolve, rejected) => {
+            this.database.query("SELECT * FROM usuario_imagem", [], (erro, result) => {
+                if (erro) {
+                    return rejected(erro);
+                }
+                resolve(result);
+            });
+        });
+
+        if (result.length > 0) {
+            return result;
+        } else {
+            throw new Error("Nenhuma imagem encontrada para o usuário");
+        }
+    }
 
     async remover(id) {
         this.database.query("DELETE FROM usuario_imagem WHERE id = ?", [id], (erro, result) => {
