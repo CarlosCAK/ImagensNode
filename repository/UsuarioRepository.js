@@ -45,6 +45,22 @@ class UserRepository {
     async remover(id){
         this.database.query("DELETE FROM USUARIO WHERE id = ?", [id])
     }
+    async buscarTodos() {
+        const result = await new Promise((resolve, rejected) => {
+            this.database.query("SELECT * FROM usuario", [], (erro, result) => {
+                if (erro) {
+                    return rejected(erro);
+                }
+                resolve(result);
+            });
+        });
+
+        if (result.length > 0) {
+            return result;
+        } else {
+            throw new Error("Nenhuma imagem encontrada para o usuário");
+        }
+    }
 }
 
 module.exports = UserRepository;

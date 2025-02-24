@@ -30,6 +30,23 @@ class ImageService{
         const imagem = imagemPutDto.toEntity()
         this.repository.atualizar(imagem)
     }
+    async buscarTodos() {
+        const resultado = await this.repository.buscarTodos();
+
+        if (resultado.length > 0) {
+            const imagensDTO = resultado.map((item) => {
+                const idResposta = item.id;
+                const referencia = item.referencia;
+                const data_criacao = item.data_criacao;
+                const titulo = item.titulo
+
+                return new ImagemGetDTO(idResposta,referencia,data_criacao,titulo);
+            });
+            return imagensDTO;
+        } else {
+            throw new Error("Nenhuma imagem encontrada para este usuário");
+        }
+    }
     async buscarPorId(id){
        const resultado = await this.repository.buscarPorId(id)
 

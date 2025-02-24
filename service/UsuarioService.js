@@ -36,6 +36,23 @@ class UserService{
     async remover(id){
         this.repository.remover(id)
     }
+    async buscarTodos() {
+        const resultado = await this.repository.buscarTodos();
+
+        if (resultado.length > 0) {
+            const usuariosDTO = resultado.map((item) => {
+                const idResposta = item.id;
+                const nome = item.nome;
+                const data_criacao = item.data_criacao;
+
+
+                return new UsuarioGetDTO(idResposta,nome,data_criacao);
+            });
+            return usuariosDTO;
+        } else {
+            throw new Error("Nenhuma imagem encontrada para este usuário");
+        }
+    }
 
 }
 

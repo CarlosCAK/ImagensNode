@@ -79,6 +79,18 @@ class UsuarioController{
             })
         }
     }
+    async buscarTodos(req,res){
+
+        try {
+
+            const usuarios = await this.service.buscarTodos()
+
+            res.status(200).json({usuarios})
+
+        } catch (error) {
+            res.status(500).json({error})
+        }
+    }
 
 }
 
