@@ -1,64 +1,32 @@
-class ImagemController{
+const AwsService = require("../service/AwsService")
+
+class AwsController{
 
     constructor(){
-        this.service = new ImageService()
+        this.service = new AwsService()
     }
 
-    async salvar(req,res){
+   
+    async baixarArquivoPorReferencia(req,res){
 
         try {
-           
+            
+            const referencia = req.params.referencia;
+
+            await this.service.downloadFile(referencia, `C:\\Users\\carlos_kviatkowsky\\Documents\\Github\\ImagensNode\\Assets\\${referencia}.jpeg`)
+
+            res.status(200).json()
+
+        } catch (error) {
+            res.status(500).json({error})
+        }
+    }
     
-            const idUsuario = req.body.idUsuario
-            const referenciaImagem = req.body.referenciaImagem
-
-            const image = new ImagePostDTO(referencia,titulo) 
-
-            this.service.salvar(image)
-
-            res.status(200).json({"message" : "Sucesso"})
-        } catch (error) {
-            res.status(500).json({error})
-        }
-
-    }
-    async buscarPorId(req,res){
-
-        try {
-            
-            const idImage = req.params.id;
-
-            const image = await this.service.buscarPorId(idImage)
-
-            res.status(200).json({image})
-
-        } catch (error) {
-            res.status(500).json({error})
-        }
-    }
-    atualizar(req,res){
-
-        try {
-            const referencia = req.body.referencia
-            const titulo = req.body.titulo
-            const id = req.body.id
-            
-            const imagem = new ImagemPutDTO(id,referencia,null,titulo)
-            console.log(imagem)
-            this.service.atualizar(imagem)
-
-            res.status(200).json({"message" : "sucesso"})
-
-
-        } catch (error) {
-            res.status(500).json({error})
-        }
-    }
     remover(req,res){
         try {
-            const id = +req.params.id
+            const referencia = +req.params.referencia
 
-            this.service.remover(id)
+            this.service.remover(referencia)
 
             res.status(200).json({
                 "Message" : "Deletado"
@@ -72,4 +40,4 @@ class ImagemController{
     }
 
 }
-module.exports = ImagemController
+module.exports = AwsController

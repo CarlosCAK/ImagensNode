@@ -12,9 +12,11 @@ class ImagemController{
     async salvar(req,res){
 
         try {
-           
+        
     
             const caminhoImagem = req.body.caminhoImagem
+
+
             const titulo = req.body.titulo
 
             const image = new ImagePostDTO(titulo) 

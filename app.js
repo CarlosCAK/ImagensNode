@@ -1,6 +1,7 @@
 const express = require("express")
 // const userRepository = require("../Repository/userRepository")
 const routes = require("./routes/routes")
+require('dotenv').config();
 // const repository = new userRepository();
 
 const app = express();

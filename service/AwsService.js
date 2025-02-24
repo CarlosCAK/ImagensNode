@@ -6,6 +6,8 @@ class AwsService{
  
 
    uploadFile(filePath, bucketName, keyName){
+
+
     const fileContent = fs.readFileSync(filePath);
   
     const params = {
@@ -28,20 +30,24 @@ class AwsService{
   
   
   // Função para baixar um arquivo do S3
-   downloadFile(bucketName, keyName, downloadPath){
+   downloadFile(keyName, downloadPath){
       const params = {
-        Bucket: bucketName,
-        Key: keyName
+        Bucket: "bucket",
+        Key: keyName  
       };
     
       const file = fs.createWriteStream(downloadPath);
-    
       s3.getObject(params).createReadStream().pipe(file);
+    
     
       file.on('close', () => {
         console.log('Arquivo baixado com sucesso:', downloadPath);
       });
     };
+
+    remover(referencia){
+
+    }
     
     // Exemplo de uso
 

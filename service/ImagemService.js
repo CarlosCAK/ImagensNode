@@ -18,10 +18,12 @@ class ImageService{
 
         const imagem = imagemPostDTO.toEntity();
 
+
         imagem.dataCriacao = date;
         imagem.referencia = uuidv4()
 
-        this.awsService.uploadFile(arquivoImagem,"hav-bucket-images",imagem.referencia)
+
+        this.awsService.uploadFile(arquivoImagem,"bucket",imagem.referencia)
 
         this.repository.salvar(imagem)
     }

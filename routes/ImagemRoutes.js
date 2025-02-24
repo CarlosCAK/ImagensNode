@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const ImagemController = require("../controller/ImagemController")
+const ImagemController = require("../Controller/ImagemController")
 
 const controller = new ImagemController()
 
