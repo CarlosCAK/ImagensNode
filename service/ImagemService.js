@@ -1,6 +1,7 @@
 const ImageRepository = require("../repository/ImagemRepository")
 const ImagemGetDTO = require("../dto/ImagemGetDTO")
 const AwsService = require("./AwsService")
+const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 class ImageService{
@@ -21,7 +22,9 @@ class ImageService{
 
         imagem.dataCriacao = date;
         imagem.referencia = uuidv4()
+        const extencao = path.extname(arquivoImagem)
 
+        imagem.referencia = imagem.referencia + extencao;
 
         this.awsService.uploadFile(arquivoImagem,"bucket",imagem.referencia)
 

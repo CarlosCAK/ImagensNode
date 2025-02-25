@@ -37,8 +37,8 @@ class AwsService{
       };
     
       const file = fs.createWriteStream(downloadPath);
-      s3.getObject(params).createReadStream().pipe(file);
     
+      s3.getObject(params).createReadStream().pipe(file);
     
       file.on('close', () => {
         console.log('Arquivo baixado com sucesso:', downloadPath);
